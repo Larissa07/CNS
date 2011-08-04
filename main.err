@@ -1,4 +1,8 @@
->>> Warning 208 "C:\Documents and Settings\Administrador\Desktop\PROJETO LARISSA\Funçoes.c" Line 2(1,8): Function not void and does not return a value  teclado
->>> Warning 203 "main.c" Line 11(1,1): Condition always TRUE
-      Memory usage:   ROM=4%      RAM=2% - 3%
-      0 Errors,  2 Warnings.
+>>> Warning 204 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 10(1,1): Condition always FALSE   BD
+*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 10(11,13): Undefined identifier
+*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 11(11,13): Undefined identifier   BE
+*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 12(11,13): Undefined identifier   BC
+*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 13(11,13): Undefined identifier   BB
+*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 18(5,8): Undefined identifier  teclado Lcd
+*** Error 12 "main.c" Line 13(4,18): Undefined identifier   func_bloqueado
+      6 Errors,  1 Warnings.

@@ -1,7 +1,7 @@
 #include <16f876a.h>
 #use delay(clock=16000000)
 #include <lcd_modificado.c>
-#include <Funçoes.c>
+#include <funcoes.c>
 void main()
 {
    char x,i;
@@ -9,6 +9,7 @@ void main()
    port_b_pullups(true);
    while(1)
    {
-
+   func_normal();
+   func_bloqueado;
    }
 }
