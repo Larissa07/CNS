@@ -20,8 +20,7 @@ void main()
    inicializa_lcd();
    port_b_pullups(true);
    lcd_inst(0x80);
-   printf(lcd_Dado,"testando ");
-   delay_ms(1000);
+   printf(lcd_Dado,"   gbfrtd      ");
    verifica();
    while(1)
    {
