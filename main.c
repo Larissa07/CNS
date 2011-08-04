@@ -14,7 +14,6 @@ struct user
    int1 logado;
 } usuario;
 
-
 void main()
 {
    inicializa_lcd();
@@ -24,6 +23,7 @@ void main()
    verifica();
    while(1)
    {
-
+   func_normal();
+   func_bloqueado;
    }
 }

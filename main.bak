@@ -2,6 +2,7 @@
 #use delay(clock=16000000)
 #include <lcd_modificado.c>
 #include <funcoes.c>
+<<<<<<< HEAD
 #include <teclado.c>
 #include <verifica.c>
 
@@ -15,13 +16,18 @@ struct user
 } usuario;
 
 
+=======
+>>>>>>> 318478830ff9034b5fa4ed9fd59f178f715abb5f
 void main()
 {
    inicializa_lcd();
    port_b_pullups(true);
+   lcd_inst(0x80);
+   printf(lcd_Dado,"   gbfrtd      ");
    verifica();
    while(1)
    {
-
+   func_normal();
+   func_bloqueado;
    }
 }
