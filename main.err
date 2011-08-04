@@ -1,0 +1,4 @@
+>>> Warning 208 "C:\Documents and Settings\Administrador\Desktop\PROJETO LARISSA\Funçoes.c" Line 2(1,8): Function not void and does not return a value  teclado
+>>> Warning 203 "main.c" Line 11(1,1): Condition always TRUE
+      Memory usage:   ROM=4%      RAM=2% - 3%
+      0 Errors,  2 Warnings.

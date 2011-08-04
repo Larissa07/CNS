@@ -1,0 +1,42 @@
+[PROJECT]
+Target=main.HEX
+Development_Mode=2
+Processor=0x876A
+ToolSuite=CCS
+Processor_Text=PIC16F876A
+
+[Directories]
+Include=
+Library=
+LinkerScript=
+
+[Target Data]
+FileList=C:\Documents and Settings\Administrador\Desktop\PROJETO LARISSA\main.c
+BuildTool=C-COMPILER
+OptionString=+FM
+AdditionalOptionString=
+BuildRequired=1
+
+[main.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=main.c
+
+[Windows]
+0=0000 main.c 0 0 796 451 3 0
+
+[Opened Files]
+1=C:\Documents and Settings\Administrador\Desktop\PROJETO LARISSA\main.c
+2=C:\Documents and Settings\Administrador\Desktop\PROJETO LARISSA\lcd_modificado.c
+3=C:\Documents and Settings\Administrador\Desktop\PROJETO LARISSA\Funçoes.c
+4=
+[Units]
+Count=1
+1=main.c (main)
+Link=0

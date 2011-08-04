@@ -1,0 +1,558 @@
+CCS PCM C Compiler, Version 4.038, 42871               03-ago-11 09:54
+
+               Filename: C:\Documents and Settings\Administrador\Desktop\PROJETO LARISSA\main.lst
+
+               ROM used: 321 words (4%)
+                         Largest free fragment is 2048
+               RAM used: 9 (2%) at main() level
+                         11 (3%) worst case
+               Stack:    3 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   11C
+0003:  NOP
+.................... #include <16f876a.h> 
+.................... //////// Standard Header file for the PIC16F876A device //////////////// 
+.................... #device PIC16F876A 
+.................... #list 
+....................  
+.................... #use delay(clock=16000000) 
+0004:  MOVLW  24
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  05
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  2E
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETLW  00
+.................... #include <lcd_modificado.c> 
+.................... /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *                                                                     * 
+....................  *             Rotina Genérica de Manipulação de LCD 16x2              * 
+....................  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */ 
+....................  
+....................  
+.................... // Defina os pinos que estão ligados fisicamente 
+....................  
+.................... #define  RS    PIN_C4    // Pino de seleção de modo do display 
+.................... #define  EN    PIN_A4    // Pino de habilitação do display 
+.................... #define  D7    PIN_A0  // Pino de dados 7 
+.................... #define  D6    PIN_A1    // Pino de dados 6 
+.................... #define  D5    PIN_A2    // Pino de dados 5 
+.................... #define  D4    PIN_A3    // Pino de dados 4 
+....................  
+.................... //prot�tipo das fun��es 
+.................... void lcd_inst4(unsigned char dado); 
+.................... void lcd_inst(unsigned char dado); 
+....................  
+.................... /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+....................  *                      Rotina de Inicialização de LCD                 * 
+....................  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */ 
+....................  
+....................  
+.................... void inicializa_lcd(void) 
+.................... { 
+....................  
+....................    lcd_inst4(0b00000011); 
+*
+00E9:  MOVLW  03
+00EA:  MOVWF  23
+00EB:  CALL   019
+....................    delay_ms(15); 
+00EC:  MOVLW  0F
+00ED:  MOVWF  24
+00EE:  CALL   004
+....................    lcd_inst4(0b00000011); 
+00EF:  MOVLW  03
+00F0:  MOVWF  23
+00F1:  CALL   019
+....................    delay_ms(15); 
+00F2:  MOVLW  0F
+00F3:  MOVWF  24
+00F4:  CALL   004
+....................    lcd_inst4(0b00000011); 
+00F5:  MOVLW  03
+00F6:  MOVWF  23
+00F7:  CALL   019
+....................    delay_ms(15); 
+00F8:  MOVLW  0F
+00F9:  MOVWF  24
+00FA:  CALL   004
+....................    lcd_inst4(0b00000010); 
+00FB:  MOVLW  02
+00FC:  MOVWF  23
+00FD:  CALL   019
+....................    delay_ms(15); 
+00FE:  MOVLW  0F
+00FF:  MOVWF  24
+0100:  CALL   004
+....................  
+....................    lcd_inst(0b00101000); 
+0101:  MOVLW  28
+0102:  MOVWF  23
+0103:  CALL   064
+....................    delay_ms(15); 
+0104:  MOVLW  0F
+0105:  MOVWF  24
+0106:  CALL   004
+....................    lcd_inst(0b00001100); 
+0107:  MOVLW  0C
+0108:  MOVWF  23
+0109:  CALL   064
+....................    delay_ms(15); 
+010A:  MOVLW  0F
+010B:  MOVWF  24
+010C:  CALL   004
+....................    lcd_inst(0b00000110); 
+010D:  MOVLW  06
+010E:  MOVWF  23
+010F:  CALL   064
+....................    delay_ms(15); 
+0110:  MOVLW  0F
+0111:  MOVWF  24
+0112:  CALL   004
+....................    lcd_inst(0b00000001); 
+0113:  MOVLW  01
+0114:  MOVWF  23
+0115:  CALL   064
+....................    delay_ms(100); 
+0116:  MOVLW  64
+0117:  MOVWF  24
+0118:  CALL   004
+.................... } 
+0119:  BCF    0A.3
+011A:  BCF    0A.4
+011B:  GOTO   12B (RETURN)
+....................  
+.................... /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+....................  *                  Rotina de Envio de Comando para o LCD              * 
+....................  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */ 
+....................  
+.................... void lcd_inst4(unsigned char dado) 
+.................... { 
+....................  
+....................    output_low(RS);                          //Limpa o pino RS, modo comando 
+*
+0019:  BCF    20.4
+001A:  MOVF   20,W
+001B:  BSF    03.5
+001C:  MOVWF  07
+001D:  BCF    03.5
+001E:  BCF    07.4
+*
+0127:  MOVLW  FF
+0128:  BCF    03.5
+0129:  MOVWF  20
+....................    delay_us(100); 
+*
+001F:  MOVLW  85
+0020:  MOVWF  77
+0021:  DECFSZ 77,F
+0022:  GOTO   021
+....................  
+....................    if (dado & 0b00001000) output_high(D7);         //Se o bit estiver em 1 liga a saída 
+0023:  BTFSS  23.3
+0024:  GOTO   02A
+0025:  BSF    03.5
+0026:  BCF    05.0
+0027:  BCF    03.5
+0028:  BSF    05.0
+....................    else                  output_low(D7);        //Caso contrário desliga a linha 
+0029:  GOTO   02E
+002A:  BSF    03.5
+002B:  BCF    05.0
+002C:  BCF    03.5
+002D:  BCF    05.0
+....................  
+....................    if (dado & 0b00000100) output_high(D6);         //Se o bit estiver em 1 liga a saída 
+002E:  BTFSS  23.2
+002F:  GOTO   035
+0030:  BSF    03.5
+0031:  BCF    05.1
+0032:  BCF    03.5
+0033:  BSF    05.1
+....................    else                output_low(D6);         //Caso contrário desliga a linha 
+0034:  GOTO   039
+0035:  BSF    03.5
+0036:  BCF    05.1
+0037:  BCF    03.5
+0038:  BCF    05.1
+....................  
+....................    if (dado & 0b00000010) output_high(D5);         //Se o bit estiver em 1 liga a saída 
+0039:  BTFSS  23.1
+003A:  GOTO   040
+003B:  BSF    03.5
+003C:  BCF    05.2
+003D:  BCF    03.5
+003E:  BSF    05.2
+....................    else               output_low(D5);         //Caso contrário desliga a linha 
+003F:  GOTO   044
+0040:  BSF    03.5
+0041:  BCF    05.2
+0042:  BCF    03.5
+0043:  BCF    05.2
+....................  
+....................    if (dado & 0b00000001) output_high(D4);        //Se o bit estiver em 1 liga a saída 
+0044:  BTFSS  23.0
+0045:  GOTO   04B
+0046:  BSF    03.5
+0047:  BCF    05.3
+0048:  BCF    03.5
+0049:  BSF    05.3
+....................    else                 output_low(D4);         //Caso contrário desliga a linha 
+004A:  GOTO   04F
+004B:  BSF    03.5
+004C:  BCF    05.3
+004D:  BCF    03.5
+004E:  BCF    05.3
+....................  
+....................    delay_us(100); 
+004F:  MOVLW  85
+0050:  MOVWF  77
+0051:  DECFSZ 77,F
+0052:  GOTO   051
+....................  
+....................    output_high(EN);                                    //Gera pulso de enable 
+0053:  BSF    03.5
+0054:  BCF    05.4
+0055:  BCF    03.5
+0056:  BSF    05.4
+....................    delay_us(150);                                       //Aguarda 150 us 
+0057:  MOVLW  C7
+0058:  MOVWF  77
+0059:  DECFSZ 77,F
+005A:  GOTO   059
+005B:  GOTO   05C
+....................    output_low(EN); 
+005C:  BSF    03.5
+005D:  BCF    05.4
+005E:  BCF    03.5
+005F:  BCF    05.4
+....................  
+....................    delay_ms(5);                                      //Faz a inicialização do display 
+0060:  MOVLW  05
+0061:  MOVWF  24
+0062:  CALL   004
+....................  
+.................... } 
+0063:  RETLW  00
+....................  
+.................... /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+....................  *                  Rotina de Envio de Comando para o LCD              * 
+....................  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */ 
+....................  
+.................... void lcd_inst(unsigned char dado) 
+.................... { 
+....................    output_low(RS);                                 //Limpa o pino RS, modo comando 
+0064:  BCF    20.4
+0065:  MOVF   20,W
+0066:  BSF    03.5
+0067:  MOVWF  07
+0068:  BCF    03.5
+0069:  BCF    07.4
+....................    delay_us(100); 
+006A:  MOVLW  85
+006B:  MOVWF  77
+006C:  DECFSZ 77,F
+006D:  GOTO   06C
+....................  
+....................    if (dado & 0b10000000) output_high(D7);         //Se o bit estiver em 1 liga a saída 
+006E:  BTFSS  23.7
+006F:  GOTO   075
+0070:  BSF    03.5
+0071:  BCF    05.0
+0072:  BCF    03.5
+0073:  BSF    05.0
+....................    else                      output_low(D7);            //Caso contrário desliga a linha 
+0074:  GOTO   079
+0075:  BSF    03.5
+0076:  BCF    05.0
+0077:  BCF    03.5
+0078:  BCF    05.0
+....................  
+....................    if (dado & 0b01000000) output_high(D6);         //Se o bit estiver em 1 liga a saída 
+0079:  BTFSS  23.6
+007A:  GOTO   080
+007B:  BSF    03.5
+007C:  BCF    05.1
+007D:  BCF    03.5
+007E:  BSF    05.1
+....................    else                     output_low(D6);            //Caso contrário desliga a linha 
+007F:  GOTO   084
+0080:  BSF    03.5
+0081:  BCF    05.1
+0082:  BCF    03.5
+0083:  BCF    05.1
+....................  
+....................    if (dado & 0b00100000) output_high(D5);         //Se o bit estiver em 1 liga a saída 
+0084:  BTFSS  23.5
+0085:  GOTO   08B
+0086:  BSF    03.5
+0087:  BCF    05.2
+0088:  BCF    03.5
+0089:  BSF    05.2
+....................    else                    output_low(D5);            //Caso contrário desliga a linha 
+008A:  GOTO   08F
+008B:  BSF    03.5
+008C:  BCF    05.2
+008D:  BCF    03.5
+008E:  BCF    05.2
+....................  
+....................    if (dado & 0b00010000) output_high(D4);         //Se o bit estiver em 1 liga a saída 
+008F:  BTFSS  23.4
+0090:  GOTO   096
+0091:  BSF    03.5
+0092:  BCF    05.3
+0093:  BCF    03.5
+0094:  BSF    05.3
+....................    else                      output_low(D4);            //Caso contrário desliga a linha 
+0095:  GOTO   09A
+0096:  BSF    03.5
+0097:  BCF    05.3
+0098:  BCF    03.5
+0099:  BCF    05.3
+....................  
+....................    delay_us(100); 
+009A:  MOVLW  85
+009B:  MOVWF  77
+009C:  DECFSZ 77,F
+009D:  GOTO   09C
+....................  
+....................    output_high(EN);                                    //Gera pulso de enable 
+009E:  BSF    03.5
+009F:  BCF    05.4
+00A0:  BCF    03.5
+00A1:  BSF    05.4
+....................    delay_us(1);                                       //Aguarda 150 us 
+00A2:  GOTO   0A3
+00A3:  GOTO   0A4
+....................    output_low(EN); 
+00A4:  BSF    03.5
+00A5:  BCF    05.4
+00A6:  BCF    03.5
+00A7:  BCF    05.4
+....................  
+....................    if (dado & 0b00001000) output_high(D7);         //Se o bit estiver em 1 liga a saída 
+00A8:  BTFSS  23.3
+00A9:  GOTO   0AF
+00AA:  BSF    03.5
+00AB:  BCF    05.0
+00AC:  BCF    03.5
+00AD:  BSF    05.0
+....................    else                      output_low(D7);            //Caso contrário desliga a linha 
+00AE:  GOTO   0B3
+00AF:  BSF    03.5
+00B0:  BCF    05.0
+00B1:  BCF    03.5
+00B2:  BCF    05.0
+....................  
+....................    if (dado & 0b00000100) output_high(D6);         //Se o bit estiver em 1 liga a saída 
+00B3:  BTFSS  23.2
+00B4:  GOTO   0BA
+00B5:  BSF    03.5
+00B6:  BCF    05.1
+00B7:  BCF    03.5
+00B8:  BSF    05.1
+....................    else                     output_low(D6);            //Caso contrário desliga a linha 
+00B9:  GOTO   0BE
+00BA:  BSF    03.5
+00BB:  BCF    05.1
+00BC:  BCF    03.5
+00BD:  BCF    05.1
+....................  
+....................    if (dado & 0b00000010) output_high(D5);         //Se o bit estiver em 1 liga a saída 
+00BE:  BTFSS  23.1
+00BF:  GOTO   0C5
+00C0:  BSF    03.5
+00C1:  BCF    05.2
+00C2:  BCF    03.5
+00C3:  BSF    05.2
+....................    else                    output_low(D5);            //Caso contrário desliga a linha 
+00C4:  GOTO   0C9
+00C5:  BSF    03.5
+00C6:  BCF    05.2
+00C7:  BCF    03.5
+00C8:  BCF    05.2
+....................  
+....................    if (dado & 0b00000001) output_high(D4);         //Se o bit estiver em 1 liga a saída 
+00C9:  BTFSS  23.0
+00CA:  GOTO   0D0
+00CB:  BSF    03.5
+00CC:  BCF    05.3
+00CD:  BCF    03.5
+00CE:  BSF    05.3
+....................    else                      output_low(D4);            //Caso contrário desliga a linha 
+00CF:  GOTO   0D4
+00D0:  BSF    03.5
+00D1:  BCF    05.3
+00D2:  BCF    03.5
+00D3:  BCF    05.3
+....................  
+....................  
+....................    delay_us(10); 
+00D4:  MOVLW  0D
+00D5:  MOVWF  77
+00D6:  DECFSZ 77,F
+00D7:  GOTO   0D6
+....................  
+....................    output_high(EN);                                    //Gera pulso de enable 
+00D8:  BSF    03.5
+00D9:  BCF    05.4
+00DA:  BCF    03.5
+00DB:  BSF    05.4
+....................    delay_us(150);                                       //Aguarda 150 us 
+00DC:  MOVLW  C7
+00DD:  MOVWF  77
+00DE:  DECFSZ 77,F
+00DF:  GOTO   0DE
+00E0:  GOTO   0E1
+....................    output_low(EN); 
+00E1:  BSF    03.5
+00E2:  BCF    05.4
+00E3:  BCF    03.5
+00E4:  BCF    05.4
+....................  
+....................    delay_ms(5);                                     //Faz a inicialização do display 
+00E5:  MOVLW  05
+00E6:  MOVWF  24
+00E7:  CALL   004
+....................  
+.................... } 
+00E8:  RETLW  00
+....................  
+.................... /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+....................  *                  Rotina de Envio de Dados para o LCD                * 
+....................  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */ 
+....................  
+.................... void Lcd_Dado(char dado) 
+.................... { 
+....................  
+....................    output_high(RS);                                 //Limpa o pino RS, modo comando 
+....................    delay_us(100); 
+....................  
+....................    if (dado & 0b10000000) output_high(D7);         //Se o bit estiver em 1 liga a saída 
+....................    else                      output_low(D7);            //Caso contrário desliga a linha 
+....................  
+....................    if (dado & 0b01000000) output_high(D6);         //Se o bit estiver em 1 liga a saída 
+....................    else                     output_low(D6);            //Caso contrário desliga a linha 
+....................  
+....................    if (dado & 0b00100000) output_high(D5);         //Se o bit estiver em 1 liga a saída 
+....................    else                    output_low(D5);            //Caso contrário desliga a linha 
+....................  
+....................    if (dado & 0b00010000) output_high(D4);         //Se o bit estiver em 1 liga a saída 
+....................    else                      output_low(D4);            //Caso contrário desliga a linha 
+....................  
+....................    delay_us(10); 
+....................  
+....................    output_high(EN);                                    //Gera pulso de enable 
+....................    delay_us(1);                                       //Aguarda 150 us 
+....................    output_low(EN); 
+....................  
+....................    if (dado & 0b00001000) output_high(D7);         //Se o bit estiver em 1 liga a saída 
+....................    else                      output_low(D7);            //Caso contrário desliga a linha 
+....................  
+....................    if (dado & 0b00000100) output_high(D6);         //Se o bit estiver em 1 liga a saída 
+....................    else                     output_low(D6);            //Caso contrário desliga a linha 
+....................  
+....................    if (dado & 0b00000010) output_high(D5);         //Se o bit estiver em 1 liga a saída 
+....................    else                    output_low(D5);            //Caso contrário desliga a linha 
+....................  
+....................    if (dado & 0b00000001) output_high(D4);         //Se o bit estiver em 1 liga a saída 
+....................    else                      output_low(D4);            //Caso contrário desliga a linha 
+....................  
+....................  
+....................    delay_us(10); 
+....................  
+....................    output_high(EN);                                    //Gera pulso de enable 
+....................    delay_us(150);                                       //Aguarda 150 us 
+....................    output_low(EN); 
+....................  
+....................    delay_ms(3);                                     //Faz a inicialização do display 
+....................  
+.................... } 
+....................  
+....................  
+.................... #include <Fun�oes.c> 
+.................... //******************************************************************************************************************** 
+.................... teclado() 
+.................... { 
+.................... char tecla; 
+.................... #define BD PIN_B4 
+.................... #define BE PIN_B5 
+.................... #define BC PIN_B6 
+.................... #define BB PIN_B7 
+.................... if(!input(BD))tecla=1; 
+.................... if(!input(BE))tecla=2; 
+.................... if(!input(BC))tecla=3; 
+.................... if(!input(BB))tecla=4; 
+.................... } 
+.................... //******************************************************************************************************************* 
+....................  
+.................... void main() 
+.................... { 
+*
+011C:  CLRF   04
+011D:  BCF    03.7
+011E:  MOVLW  1F
+011F:  ANDWF  03,F
+0120:  BSF    03.5
+0121:  BSF    1F.0
+0122:  BSF    1F.1
+0123:  BSF    1F.2
+0124:  BCF    1F.3
+0125:  MOVLW  07
+0126:  MOVWF  1C
+....................    char x,i; 
+....................    inicializa_lcd(); 
+*
+012A:  GOTO   0E9
+....................    port_b_pullups(true); 
+012B:  BSF    03.5
+012C:  BCF    01.7
+....................    while(1) 
+....................    { 
+....................    for(i=0;i<99;i++)x=read_eeprom(i); 
+012D:  BCF    03.5
+012E:  CLRF   22
+012F:  MOVF   22,W
+0130:  SUBLW  62
+0131:  BTFSS  03.0
+0132:  GOTO   13F
+0133:  MOVF   22,W
+0134:  BSF    03.6
+0135:  MOVWF  0D
+0136:  BSF    03.5
+0137:  BCF    0C.7
+0138:  BSF    0C.0
+0139:  BCF    03.5
+013A:  MOVF   0C,W
+013B:  BCF    03.6
+013C:  MOVWF  21
+013D:  INCF   22,F
+013E:  GOTO   12F
+....................    
+....................     
+....................     
+....................     
+....................     
+....................    } 
+013F:  GOTO   12E
+.................... } 
+0140:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F73   RC NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT

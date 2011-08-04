@@ -1,0 +1,28 @@
+ÀÄmain
+   ÀÄMAIN  0/37  Ram=2
+      ÃÄ??0??
+      ÀÄinicializa_lcd  0/51  Ram=0
+         ÃÄlcd_inst4  0/75  Ram=1
+         ³  ÀÄ@delay_ms1  0/21  Ram=1
+         ÃÄ@delay_ms1  0/21  Ram=1
+         ÃÄlcd_inst4  0/75  Ram=1
+         ³  ÀÄ@delay_ms1  0/21  Ram=1
+         ÃÄ@delay_ms1  0/21  Ram=1
+         ÃÄlcd_inst4  0/75  Ram=1
+         ³  ÀÄ@delay_ms1  0/21  Ram=1
+         ÃÄ@delay_ms1  0/21  Ram=1
+         ÃÄlcd_inst4  0/75  Ram=1
+         ³  ÀÄ@delay_ms1  0/21  Ram=1
+         ÃÄ@delay_ms1  0/21  Ram=1
+         ÃÄlcd_inst  0/133  Ram=1
+         ³  ÀÄ@delay_ms1  0/21  Ram=1
+         ÃÄ@delay_ms1  0/21  Ram=1
+         ÃÄlcd_inst  0/133  Ram=1
+         ³  ÀÄ@delay_ms1  0/21  Ram=1
+         ÃÄ@delay_ms1  0/21  Ram=1
+         ÃÄlcd_inst  0/133  Ram=1
+         ³  ÀÄ@delay_ms1  0/21  Ram=1
+         ÃÄ@delay_ms1  0/21  Ram=1
+         ÃÄlcd_inst  0/133  Ram=1
+         ³  ÀÄ@delay_ms1  0/21  Ram=1
+         ÀÄ@delay_ms1  0/21  Ram=1
