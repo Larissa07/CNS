@@ -2,6 +2,7 @@
 #define direita  PIN_B5
 #define esquerda PIN_B2
 #define cima     PIN_B3
+
 void teclado()
 {
    char tecla=0;

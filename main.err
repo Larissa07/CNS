@@ -1,8 +1,6 @@
->>> Warning 204 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 10(1,1): Condition always FALSE   BD
-*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 10(11,13): Undefined identifier
-*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 11(11,13): Undefined identifier   BE
-*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 12(11,13): Undefined identifier   BC
-*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 13(11,13): Undefined identifier   BB
-*** Error 12 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 18(5,8): Undefined identifier  teclado Lcd
-*** Error 12 "main.c" Line 13(4,18): Undefined identifier   func_bloqueado
-      6 Errors,  1 Warnings.
+>>> Warning 203 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 17(1,1): Condition always TRUE
+>>> Warning 203 "C:\Documents and Settings\Administrador\CNS\funcoes.c" Line 31(1,1): Condition always TRUE
+>>> Warning 203 "main.c" Line 12(1,1): Condition always TRUE
+>>> Warning 202 "main.c" Line 7(9,10): Variable never used:   i
+      Memory usage:   ROM=8%      RAM=2% - 4%
+      0 Errors,  4 Warnings.

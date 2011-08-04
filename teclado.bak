@@ -1,0 +1,18 @@
+#define baixo    PIN_B4
+#define direita  PIN_B5
+#define esquerda PIN_B2
+#define cima     PIN_B3
+#define led_vermelho PIN_B6  //fincionamento bloqueado
+#define led_verde    PIN_B7  //fincionando normal
+#define rele1    PIN_C4 
+#define rele2    PIN_C5 
+#define rele3    PIN_C6 
+
+void teclado()
+{
+   char tecla=0;
+   if(!input(cima))tecla=1;
+   if(!input(esquerda))tecla=2;
+   if(!input(direita))tecla=3;
+   if(!input(baixo))tecla=4;
+}

@@ -4,12 +4,13 @@
 #include <funcoes.c>
 void main()
 {
-   char x,i;
+   char i;
+   int1 bloqueio;//indica se a maquina ja tem um bloqueio pendente (0>sim   1>nao)
    inicializa_lcd();
    port_b_pullups(true);
    while(1)
    {
-   func_normal();
-   func_bloqueado;
+   if(bloqueio)func_normal();  //se bloqueio for==1 
+   if(!bloqueio)func_bloqueado();//se bloqueio for==0
    }
 }

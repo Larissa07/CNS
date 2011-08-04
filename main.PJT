@@ -11,7 +11,7 @@ Library=
 LinkerScript=
 
 [Target Data]
-FileList=C:\Documents and Settings\Administrador\Desktop\PROJETO LARISSA\main.c
+FileList=C:\Documents and Settings\Administrador\CNS\main.c
 BuildTool=C-COMPILER
 OptionString=+FM
 AdditionalOptionString=
@@ -33,9 +33,10 @@ AdditionalOptionString=
 
 [Opened Files]
 1=C:\Documents and Settings\Administrador\CNS\main.c
-2=
-3=C:\Documents and Settings\Administrador\Desktop\PROJETO LARISSA\Funçoes.c
-4=
+2=C:\Documents and Settings\Administrador\CNS\teclado.c
+3=C:\Documents and Settings\Administrador\CNS\funcoes.c
+4=C:\Documents and Settings\Administrador\CNS\lcd_modificado.c
+5=
 [Units]
 Count=1
 1=main.c (main)
