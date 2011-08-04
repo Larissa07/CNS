@@ -3,14 +3,31 @@
 #include <teclado.c>
 #include <lcd_modificado.c>
 #include <funcoes.c>
+<<<<<<< HEAD
 
 char i;
 int1 bloqueio=0;//indica se a maquina ja tem um bloqueio pendente (0>sim   1>nao)
+=======
+#include <teclado.c>
+#include <verifica.c>
+
+
+struct user 
+{
+   char id;
+   int16 senha;
+   int1 block;
+   int1 logado;
+} usuario;
+>>>>>>> 9983970855245f9b5f44b800ecbf4ad9fb7a9d87
 
 void main()
 {
    inicializa_lcd();
    port_b_pullups(true);
+   lcd_inst(0x80);
+   printf(lcd_Dado,"   gbfrtd      ");
+   verifica();
    while(1)
    {
    if(!bloqueio)func_normal();  //se bloqueio for==1 
