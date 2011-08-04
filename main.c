@@ -1,12 +1,28 @@
 #include <16f876a.h>
 #use delay(clock=16000000)
 #include <lcd_modificado.c>
-#include <Funçoes.c>
+#include <funcoes.c>
+#include <teclado.c>
+#include <verifica.c>
+
+
+struct user 
+{
+   char id;
+   int16 senha;
+   int1 block;
+   int1 logado;
+} usuario;
+
+
 void main()
 {
-   char x,i;
    inicializa_lcd();
    port_b_pullups(true);
+   lcd_inst(0x80);
+   printf(lcd_Dado,"testando ");
+   delay_ms(1000);
+   verifica();
    while(1)
    {
 
