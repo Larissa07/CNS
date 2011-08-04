@@ -1,8 +1,8 @@
-CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
+CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:54
 
                Filename: C:\Documents and Settings\Administrador\CNS\main.lst
 
-               ROM used: 637 words (8%)
+               ROM used: 676 words (8%)
                          Largest free fragment is 2048
                RAM used: 9 (2%) at main() level
                          13 (4%) worst case
@@ -11,7 +11,7 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 *
 0000:  MOVLW  00
 0001:  MOVWF  0A
-0002:  GOTO   265
+0002:  GOTO   28B
 0003:  NOP
 .................... #include <16f876a.h> 
 .................... //////// Standard Header file for the PIC16F876A device //////////////// 
@@ -40,6 +40,55 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 0067:  DECFSZ 00,F
 0068:  GOTO   05B
 0069:  RETLW  00
+.................... #include <teclado.c> 
+.................... #define baixo    PIN_B4 
+.................... #define direita  PIN_B5 
+.................... #define esquerda PIN_B2 
+.................... #define cima     PIN_B3 
+....................  
+.................... char teclado() 
+.................... { 
+....................    char tecla=0; 
+*
+01F2:  CLRF   23
+....................    if(!input(cima))tecla=1; 
+01F3:  BSF    03.5
+01F4:  BSF    06.3
+01F5:  BCF    03.5
+01F6:  BTFSC  06.3
+01F7:  GOTO   1FA
+01F8:  MOVLW  01
+01F9:  MOVWF  23
+....................    if(!input(esquerda))tecla=2; 
+01FA:  BSF    03.5
+01FB:  BSF    06.2
+01FC:  BCF    03.5
+01FD:  BTFSC  06.2
+01FE:  GOTO   201
+01FF:  MOVLW  02
+0200:  MOVWF  23
+....................    if(!input(direita))tecla=3; 
+0201:  BSF    03.5
+0202:  BSF    06.5
+0203:  BCF    03.5
+0204:  BTFSC  06.5
+0205:  GOTO   208
+0206:  MOVLW  03
+0207:  MOVWF  23
+....................    if(!input(baixo))tecla=4; 
+0208:  BSF    03.5
+0209:  BSF    06.4
+020A:  BCF    03.5
+020B:  BTFSC  06.4
+020C:  GOTO   20F
+020D:  MOVLW  04
+020E:  MOVWF  23
+....................    return tecla; 
+020F:  MOVF   23,W
+0210:  MOVWF  78
+.................... } 
+0211:  RETLW  00
+....................  
 .................... #include <lcd_modificado.c> 
 .................... /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *                                                                     * 
 ....................  *             Rotina Genérica de Manipulação de LCD 16x2              * 
@@ -48,9 +97,9 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 ....................  
 .................... // Defina os pinos que estão ligados fisicamente 
 ....................  
-.................... #define  RS    PIN_C4    // Pino de seleção de modo do display 
-.................... #define  EN    PIN_A4    // Pino de habilitação do display 
-.................... #define  D7    PIN_A0  // Pino de dados 7 
+.................... #define  RS    PIN_C0    // Pino de seleção de modo do display 
+.................... #define  EN    PIN_A5    // Pino de habilitação do display 
+.................... #define  D7    PIN_A0   // Pino de dados 7 
 .................... #define  D6    PIN_A1    // Pino de dados 6 
 .................... #define  D5    PIN_A2    // Pino de dados 5 
 .................... #define  D4    PIN_A3    // Pino de dados 4 
@@ -136,7 +185,7 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 .................... } 
 016A:  BCF    0A.3
 016B:  BCF    0A.4
-016C:  GOTO   274 (RETURN)
+016C:  GOTO   29B (RETURN)
 ....................  
 .................... /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 ....................  *                  Rotina de Envio de Comando para o LCD              * 
@@ -147,16 +196,16 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 ....................  
 ....................    output_low(RS);                          //Limpa o pino RS, modo comando 
 *
-006A:  BCF    20.4
+006A:  BCF    20.0
 006B:  MOVF   20,W
 006C:  BSF    03.5
 006D:  MOVWF  07
 006E:  BCF    03.5
-006F:  BCF    07.4
+006F:  BCF    07.0
 *
-0270:  MOVLW  FF
-0271:  BCF    03.5
-0272:  MOVWF  20
+0296:  MOVLW  FF
+0297:  BCF    03.5
+0298:  MOVWF  20
 ....................    delay_us(100); 
 *
 0070:  MOVLW  85
@@ -228,9 +277,9 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 ....................  
 ....................    output_high(EN);                                    //Gera pulso de enable 
 00A4:  BSF    03.5
-00A5:  BCF    05.4
+00A5:  BCF    05.5
 00A6:  BCF    03.5
-00A7:  BSF    05.4
+00A7:  BSF    05.5
 ....................    delay_us(150);                                       //Aguarda 150 us 
 00A8:  MOVLW  C7
 00A9:  MOVWF  77
@@ -239,9 +288,9 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 00AC:  GOTO   0AD
 ....................    output_low(EN); 
 00AD:  BSF    03.5
-00AE:  BCF    05.4
+00AE:  BCF    05.5
 00AF:  BCF    03.5
-00B0:  BCF    05.4
+00B0:  BCF    05.5
 ....................  
 ....................    delay_ms(5);                                      //Faz a inicialização do display 
 00B1:  MOVLW  05
@@ -258,12 +307,12 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 .................... void lcd_inst(unsigned char dado) 
 .................... { 
 ....................    output_low(RS);                                 //Limpa o pino RS, modo comando 
-00B5:  BCF    20.4
+00B5:  BCF    20.0
 00B6:  MOVF   20,W
 00B7:  BSF    03.5
 00B8:  MOVWF  07
 00B9:  BCF    03.5
-00BA:  BCF    07.4
+00BA:  BCF    07.0
 ....................    delay_us(100); 
 00BB:  MOVLW  85
 00BC:  MOVWF  77
@@ -334,17 +383,17 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 ....................  
 ....................    output_high(EN);                                    //Gera pulso de enable 
 00EF:  BSF    03.5
-00F0:  BCF    05.4
+00F0:  BCF    05.5
 00F1:  BCF    03.5
-00F2:  BSF    05.4
+00F2:  BSF    05.5
 ....................    delay_us(1);                                       //Aguarda 150 us 
 00F3:  GOTO   0F4
 00F4:  GOTO   0F5
 ....................    output_low(EN); 
 00F5:  BSF    03.5
-00F6:  BCF    05.4
+00F6:  BCF    05.5
 00F7:  BCF    03.5
-00F8:  BCF    05.4
+00F8:  BCF    05.5
 ....................  
 ....................    if (dado & 0b00001000) output_high(D7);         //Se o bit estiver em 1 liga a saída 
 00F9:  BTFSS  23.3
@@ -411,9 +460,9 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 ....................  
 ....................    output_high(EN);                                    //Gera pulso de enable 
 0129:  BSF    03.5
-012A:  BCF    05.4
+012A:  BCF    05.5
 012B:  BCF    03.5
-012C:  BSF    05.4
+012C:  BSF    05.5
 ....................    delay_us(150);                                       //Aguarda 150 us 
 012D:  MOVLW  C7
 012E:  MOVWF  77
@@ -422,9 +471,9 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 0131:  GOTO   132
 ....................    output_low(EN); 
 0132:  BSF    03.5
-0133:  BCF    05.4
+0133:  BCF    05.5
 0134:  BCF    03.5
-0135:  BCF    05.4
+0135:  BCF    05.5
 ....................  
 ....................    delay_ms(5);                                     //Faz a inicialização do display 
 0136:  MOVLW  05
@@ -443,12 +492,12 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 ....................  
 ....................    output_high(RS);                                 //Limpa o pino RS, modo comando 
 *
-016D:  BCF    20.4
+016D:  BCF    20.0
 016E:  MOVF   20,W
 016F:  BSF    03.5
 0170:  MOVWF  07
 0171:  BCF    03.5
-0172:  BSF    07.4
+0172:  BSF    07.0
 ....................    delay_us(100); 
 0173:  MOVLW  85
 0174:  MOVWF  77
@@ -519,17 +568,17 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 ....................  
 ....................    output_high(EN);                                    //Gera pulso de enable 
 01A7:  BSF    03.5
-01A8:  BCF    05.4
+01A8:  BCF    05.5
 01A9:  BCF    03.5
-01AA:  BSF    05.4
+01AA:  BSF    05.5
 ....................    delay_us(1);                                       //Aguarda 150 us 
 01AB:  GOTO   1AC
 01AC:  GOTO   1AD
 ....................    output_low(EN); 
 01AD:  BSF    03.5
-01AE:  BCF    05.4
+01AE:  BCF    05.5
 01AF:  BCF    03.5
-01B0:  BCF    05.4
+01B0:  BCF    05.5
 ....................  
 ....................    if (dado & 0b00001000) output_high(D7);         //Se o bit estiver em 1 liga a saída 
 01B1:  BTFSS  25.3
@@ -596,9 +645,9 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 ....................  
 ....................    output_high(EN);                                    //Gera pulso de enable 
 01E1:  BSF    03.5
-01E2:  BCF    05.4
+01E2:  BCF    05.5
 01E3:  BCF    03.5
-01E4:  BSF    05.4
+01E4:  BSF    05.5
 ....................    delay_us(150);                                       //Aguarda 150 us 
 01E5:  MOVLW  C7
 01E6:  MOVWF  77
@@ -607,9 +656,9 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 01E9:  GOTO   1EA
 ....................    output_low(EN); 
 01EA:  BSF    03.5
-01EB:  BCF    05.4
+01EB:  BCF    05.5
 01EC:  BCF    03.5
-01ED:  BCF    05.4
+01ED:  BCF    05.5
 ....................  
 ....................    delay_ms(3);                                     //Faz a inicialização do display 
 01EE:  MOVLW  03
@@ -630,179 +679,192 @@ CCS PCM C Compiler, Version 4.038, 42871               04-ago-11 09:23
 .................... void func_normal() 
 .................... { 
 ....................  output_high(rele1); 
-01F2:  BCF    20.4
-01F3:  MOVF   20,W
-01F4:  BSF    03.5
-01F5:  MOVWF  07
-01F6:  BCF    03.5
-01F7:  BSF    07.4
+*
+0212:  BCF    20.4
+0213:  MOVF   20,W
+0214:  BSF    03.5
+0215:  MOVWF  07
+0216:  BCF    03.5
+0217:  BSF    07.4
 ....................  output_high(rele2); 
-01F8:  BCF    20.5
-01F9:  MOVF   20,W
-01FA:  BSF    03.5
-01FB:  MOVWF  07
-01FC:  BCF    03.5
-01FD:  BSF    07.5
+0218:  BCF    20.5
+0219:  MOVF   20,W
+021A:  BSF    03.5
+021B:  MOVWF  07
+021C:  BCF    03.5
+021D:  BSF    07.5
 ....................  output_high(rele3); 
-01FE:  BCF    20.6
-01FF:  MOVF   20,W
-0200:  BSF    03.5
-0201:  MOVWF  07
-0202:  BCF    03.5
-0203:  BSF    07.6
+021E:  BCF    20.6
+021F:  MOVF   20,W
+0220:  BSF    03.5
+0221:  MOVWF  07
+0222:  BCF    03.5
+0223:  BSF    07.6
 ....................  output_high(led_verde); 
-0204:  BSF    03.5
-0205:  BCF    06.7
-0206:  BCF    03.5
-0207:  BSF    06.7
+0224:  BSF    03.5
+0225:  BCF    06.7
+0226:  BCF    03.5
+0227:  BSF    06.7
 ....................  lcd_inst(0x80); 
-0208:  MOVLW  80
-0209:  MOVWF  23
-020A:  CALL   0B5
+0228:  MOVLW  80
+0229:  MOVWF  23
+022A:  CALL   0B5
 ....................  printf(Lcd_Dado,"  FUNC_NORMAL   "); 
-020B:  CLRF   23
-020C:  MOVF   23,W
-020D:  CALL   004
-020E:  INCF   23,F
-020F:  MOVWF  77
-0210:  MOVWF  25
-0211:  CALL   16D
-0212:  MOVLW  0D
-0213:  SUBWF  23,W
-0214:  BTFSS  03.2
-0215:  GOTO   20C
-0216:  MOVLW  03
-0217:  MOVWF  24
-0218:  MOVLW  20
-0219:  MOVWF  25
-021A:  CALL   16D
-021B:  DECFSZ 24,F
-021C:  GOTO   218
+022B:  CLRF   23
+022C:  MOVF   23,W
+022D:  CALL   004
+022E:  INCF   23,F
+022F:  MOVWF  77
+0230:  MOVWF  25
+0231:  CALL   16D
+0232:  MOVLW  0D
+0233:  SUBWF  23,W
+0234:  BTFSS  03.2
+0235:  GOTO   22C
+0236:  MOVLW  03
+0237:  MOVWF  24
+0238:  MOVLW  20
+0239:  MOVWF  25
+023A:  CALL   16D
+023B:  DECFSZ 24,F
+023C:  GOTO   238
 ....................  lcd_inst(0xc0); 
-021D:  MOVLW  C0
-021E:  MOVWF  23
-021F:  CALL   0B5
+023D:  MOVLW  C0
+023E:  MOVWF  23
+023F:  CALL   0B5
 ....................  printf(Lcd_Dado,"PR. TECLA P/ BLO"); 
-0220:  CLRF   23
-0221:  MOVF   23,W
-0222:  CALL   016
-0223:  INCF   23,F
-0224:  MOVWF  77
-0225:  MOVWF  25
-0226:  CALL   16D
-0227:  MOVLW  10
-0228:  SUBWF  23,W
-0229:  BTFSS  03.2
-022A:  GOTO   221
-....................  while(1); 
-022B:  GOTO   22B
+0240:  CLRF   23
+0241:  MOVF   23,W
+0242:  CALL   016
+0243:  INCF   23,F
+0244:  MOVWF  77
+0245:  MOVWF  25
+0246:  CALL   16D
+0247:  MOVLW  10
+0248:  SUBWF  23,W
+0249:  BTFSS  03.2
+024A:  GOTO   241
+....................  while(!teclado()); 
+024B:  CALL   1F2
+024C:  MOVF   78,F
+024D:  BTFSC  03.2
+024E:  GOTO   24B
 ....................  
 .................... } 
-022C:  BCF    0A.3
-022D:  BCF    0A.4
-022E:  GOTO   279 (RETURN)
+024F:  BCF    0A.3
+0250:  BCF    0A.4
+0251:  GOTO   2A0 (RETURN)
 .................... //****************************************************************************************************************** 
 .................... void func_bloqueado() 
 .................... { 
 ....................  output_low(rele1); 
-022F:  BCF    20.4
-0230:  MOVF   20,W
-0231:  BSF    03.5
-0232:  MOVWF  07
-0233:  BCF    03.5
-0234:  BCF    07.4
+0252:  BCF    20.4
+0253:  MOVF   20,W
+0254:  BSF    03.5
+0255:  MOVWF  07
+0256:  BCF    03.5
+0257:  BCF    07.4
 ....................  output_low(rele2); 
-0235:  BCF    20.5
-0236:  MOVF   20,W
-0237:  BSF    03.5
-0238:  MOVWF  07
-0239:  BCF    03.5
-023A:  BCF    07.5
+0258:  BCF    20.5
+0259:  MOVF   20,W
+025A:  BSF    03.5
+025B:  MOVWF  07
+025C:  BCF    03.5
+025D:  BCF    07.5
 ....................  output_low(rele3); 
-023B:  BCF    20.6
-023C:  MOVF   20,W
-023D:  BSF    03.5
-023E:  MOVWF  07
-023F:  BCF    03.5
-0240:  BCF    07.6
+025E:  BCF    20.6
+025F:  MOVF   20,W
+0260:  BSF    03.5
+0261:  MOVWF  07
+0262:  BCF    03.5
+0263:  BCF    07.6
 ....................  output_high(led_vermelho); 
-0241:  BSF    03.5
-0242:  BCF    06.6
-0243:  BCF    03.5
-0244:  BSF    06.6
+0264:  BSF    03.5
+0265:  BCF    06.6
+0266:  BCF    03.5
+0267:  BSF    06.6
 ....................  lcd_inst(0x80); 
-0245:  MOVLW  80
-0246:  MOVWF  23
-0247:  CALL   0B5
+0268:  MOVLW  80
+0269:  MOVWF  23
+026A:  CALL   0B5
 ....................  printf(Lcd_Dado," FUNC_BLOQUEADO "); 
-0248:  CLRF   23
-0249:  MOVF   23,W
-024A:  CALL   02B
-024B:  INCF   23,F
-024C:  MOVWF  77
-024D:  MOVWF  25
-024E:  CALL   16D
-024F:  MOVLW  10
-0250:  SUBWF  23,W
-0251:  BTFSS  03.2
-0252:  GOTO   249
+026B:  CLRF   23
+026C:  MOVF   23,W
+026D:  CALL   02B
+026E:  INCF   23,F
+026F:  MOVWF  77
+0270:  MOVWF  25
+0271:  CALL   16D
+0272:  MOVLW  10
+0273:  SUBWF  23,W
+0274:  BTFSS  03.2
+0275:  GOTO   26C
 ....................  lcd_inst(0xc0); 
-0253:  MOVLW  C0
-0254:  MOVWF  23
-0255:  CALL   0B5
+0276:  MOVLW  C0
+0277:  MOVWF  23
+0278:  CALL   0B5
 ....................  printf(Lcd_Dado,"PR. TECLA P/ DES"); 
-0256:  CLRF   23
-0257:  MOVF   23,W
-0258:  CALL   040
-0259:  INCF   23,F
-025A:  MOVWF  77
-025B:  MOVWF  25
-025C:  CALL   16D
-025D:  MOVLW  10
-025E:  SUBWF  23,W
-025F:  BTFSS  03.2
-0260:  GOTO   257
-....................  while(1); 
-0261:  GOTO   261
+0279:  CLRF   23
+027A:  MOVF   23,W
+027B:  CALL   040
+027C:  INCF   23,F
+027D:  MOVWF  77
+027E:  MOVWF  25
+027F:  CALL   16D
+0280:  MOVLW  10
+0281:  SUBWF  23,W
+0282:  BTFSS  03.2
+0283:  GOTO   27A
+....................  while(!teclado()); 
+0284:  CALL   1F2
+0285:  MOVF   78,F
+0286:  BTFSC  03.2
+0287:  GOTO   284
 .................... } 
-0262:  BCF    0A.3
-0263:  BCF    0A.4
-0264:  GOTO   27B (RETURN)
+0288:  BCF    0A.3
+0289:  BCF    0A.4
+028A:  GOTO   2A2 (RETURN)
+.................... //****************************************************************************************************************** 
+....................  
+....................  
+.................... char i; 
+.................... int1 bloqueio=0;//indica se a maquina ja tem um bloqueio pendente (0>sim   1>nao) 
+*
+0299:  BCF    22.0
 ....................  
 .................... void main() 
 .................... { 
-0265:  CLRF   04
-0266:  BCF    03.7
-0267:  MOVLW  1F
-0268:  ANDWF  03,F
-0269:  BSF    03.5
-026A:  BSF    1F.0
-026B:  BSF    1F.1
-026C:  BSF    1F.2
-026D:  BCF    1F.3
-026E:  MOVLW  07
-026F:  MOVWF  1C
-....................    char i; 
-....................    int1 bloqueio;//indica se a maquina ja tem um bloqueio pendente (0>sim   1>nao) 
+*
+028B:  CLRF   04
+028C:  BCF    03.7
+028D:  MOVLW  1F
+028E:  ANDWF  03,F
+028F:  BSF    03.5
+0290:  BSF    1F.0
+0291:  BSF    1F.1
+0292:  BSF    1F.2
+0293:  BCF    1F.3
+0294:  MOVLW  07
+0295:  MOVWF  1C
 ....................    inicializa_lcd(); 
 *
-0273:  GOTO   13A
+029A:  GOTO   13A
 ....................    port_b_pullups(true); 
-0274:  BSF    03.5
-0275:  BCF    01.7
+029B:  BSF    03.5
+029C:  BCF    01.7
 ....................    while(1) 
 ....................    { 
-....................    if(bloqueio)func_normal();  //se bloqueio for==1  
-0276:  BCF    03.5
-0277:  BTFSC  22.0
-0278:  GOTO   1F2
-....................    if(!bloqueio)func_bloqueado();//se bloqueio for==0 
-0279:  BTFSS  22.0
-027A:  GOTO   22F
+....................    if(!bloqueio)func_normal();  //se bloqueio for==1  
+029D:  BCF    03.5
+029E:  BTFSS  22.0
+029F:  GOTO   212
+....................    if(bloqueio)func_bloqueado();//se bloqueio for==0 
+02A0:  BTFSC  22.0
+02A1:  GOTO   252
 ....................    } 
-027B:  GOTO   277
+02A2:  GOTO   29E
 .................... } 
-027C:  SLEEP
+02A3:  SLEEP
 
 Configuration Fuses:
    Word  1: 3F73   RC NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT

@@ -14,7 +14,7 @@ void func_normal()
  printf(Lcd_Dado,"  FUNC_NORMAL   ");
  lcd_inst(0xc0);
  printf(Lcd_Dado,"PR. TECLA P/ BLO");
- while(1);
+ while(!teclado());
 
 }
 //******************************************************************************************************************
@@ -28,5 +28,6 @@ void func_bloqueado()
  printf(Lcd_Dado," FUNC_BLOQUEADO ");
  lcd_inst(0xc0);
  printf(Lcd_Dado,"PR. TECLA P/ DES");
- while(1);
+ while(!teclado());
 }
+//******************************************************************************************************************

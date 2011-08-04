@@ -1,5 +1,5 @@
 ÀÄmain
-   ÀÄMAIN  0/24  Ram=2
+   ÀÄMAIN  0/25  Ram=0
       ÃÄ??0??
       ÃÄinicializa_lcd  0/51  Ram=0
       ³  ÃÄlcd_inst4  0/75  Ram=1
@@ -26,27 +26,29 @@
       ³  ÃÄlcd_inst  0/133  Ram=1
       ³  ³  ÀÄ@delay_ms1  0/21  Ram=1
       ³  ÀÄ@delay_ms1  0/21  Ram=1
-      ÃÄfunc_normal  0/61  Ram=2
+      ÃÄfunc_normal  0/64  Ram=2
       ³  ÃÄlcd_inst  0/133  Ram=1
       ³  ³  ÀÄ@delay_ms1  0/21  Ram=1
-      ³  ÃÄ@const56  0/18  Ram=0
+      ³  ÃÄ@const58  0/18  Ram=0
       ³  ÃÄLcd_Dado  0/133  Ram=1
       ³  ³  ÀÄ@delay_ms1  0/21  Ram=1
       ³  ÃÄLcd_Dado  0/133  Ram=1
       ³  ³  ÀÄ@delay_ms1  0/21  Ram=1
       ³  ÃÄlcd_inst  0/133  Ram=1
       ³  ³  ÀÄ@delay_ms1  0/21  Ram=1
-      ³  ÃÄ@const57  0/21  Ram=0
-      ³  ÀÄLcd_Dado  0/133  Ram=1
-      ³     ÀÄ@delay_ms1  0/21  Ram=1
-      ÀÄfunc_bloqueado  0/54  Ram=1
+      ³  ÃÄ@const59  0/21  Ram=0
+      ³  ÃÄLcd_Dado  0/133  Ram=1
+      ³  ³  ÀÄ@delay_ms1  0/21  Ram=1
+      ³  ÀÄteclado  0/32  Ram=1
+      ÀÄfunc_bloqueado  0/57  Ram=1
          ÃÄlcd_inst  0/133  Ram=1
          ³  ÀÄ@delay_ms1  0/21  Ram=1
-         ÃÄ@const59  0/21  Ram=0
+         ÃÄ@const61  0/21  Ram=0
          ÃÄLcd_Dado  0/133  Ram=1
          ³  ÀÄ@delay_ms1  0/21  Ram=1
          ÃÄlcd_inst  0/133  Ram=1
          ³  ÀÄ@delay_ms1  0/21  Ram=1
-         ÃÄ@const60  0/21  Ram=0
-         ÀÄLcd_Dado  0/133  Ram=1
-            ÀÄ@delay_ms1  0/21  Ram=1
+         ÃÄ@const62  0/21  Ram=0
+         ÃÄLcd_Dado  0/133  Ram=1
+         ³  ÀÄ@delay_ms1  0/21  Ram=1
+         ÀÄteclado  0/32  Ram=1

@@ -7,10 +7,11 @@
 01B     CCP_2_LOW
 01C     CCP_2_HIGH
 020     @TRIS_C
-021     MAIN.i
-022.0   MAIN.bloqueio
-023     lcd_inst.dado
+021     i
+022.0   bloqueio
 023     lcd_inst4.dado
+023     lcd_inst.dado
+023     teclado.tecla
 023     func_normal.@SCRATCH
 023     func_bloqueado.@SCRATCH
 024     func_normal.@SCRATCH
@@ -24,26 +25,28 @@
 07B     @SCRATCH
 09C.6   C1OUT
 09C.7   C2OUT
-10D-10E @WRITE_PROGRAM_MEMORY8.P1
-10D-10E @READ_PROGRAM_MEMORY8.P2
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
 
 0055  @delay_ms1
+01F2  teclado
 013A  inicializa_lcd
 006A  lcd_inst4
 00B5  lcd_inst
 016D  Lcd_Dado
-01F2  func_normal
-0004  @const56
-0016  @const57
-022F  func_bloqueado
-002B  @const59
-0040  @const60
-0265  MAIN
-0265  @cinit
+0212  func_normal
+0004  @const58
+0016  @const59
+0252  func_bloqueado
+002B  @const61
+0040  @const62
+028B  MAIN
+028B  @cinit
 
 Project Files:
     main.c
     ..\..\..\ARQUIV~1\PICC\devices\16f876a.h
+    teclado.c
     lcd_modificado.c
     funcoes.c
 

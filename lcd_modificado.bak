@@ -5,12 +5,12 @@
 
 // Defina os pinos que estão ligados fisicamente
 
-#define  RS    PIN_D2    // Pino de seleção de modo do display
-#define  EN    PIN_D3    // Pino de habilitação do display
-#define  D7    PIN_D7   // Pino de dados 7
-#define  D6    PIN_D6    // Pino de dados 6
-#define  D5    PIN_D5    // Pino de dados 5
-#define  D4    PIN_D4    // Pino de dados 4
+#define  RS    PIN_C0    // Pino de seleção de modo do display
+#define  EN    PIN_A4    // Pino de habilitação do display
+#define  D7    PIN_A0   // Pino de dados 7
+#define  D6    PIN_A1    // Pino de dados 6
+#define  D5    PIN_A2    // Pino de dados 5
+#define  D4    PIN_A3    // Pino de dados 4
 
 //prot�tipo das fun��es
 void lcd_inst4(unsigned char dado);

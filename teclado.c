@@ -3,11 +3,12 @@
 #define esquerda PIN_B2
 #define cima     PIN_B3
 
-void teclado()
+char teclado()
 {
    char tecla=0;
    if(!input(cima))tecla=1;
    if(!input(esquerda))tecla=2;
    if(!input(direita))tecla=3;
    if(!input(baixo))tecla=4;
+   return tecla;
 }

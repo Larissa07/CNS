@@ -5,9 +5,9 @@
 
 // Defina os pinos que estão ligados fisicamente
 
-#define  RS    PIN_C4    // Pino de seleção de modo do display
-#define  EN    PIN_A4    // Pino de habilitação do display
-#define  D7    PIN_A0  // Pino de dados 7
+#define  RS    PIN_C0    // Pino de seleção de modo do display
+#define  EN    PIN_A5    // Pino de habilitação do display
+#define  D7    PIN_A0   // Pino de dados 7
 #define  D6    PIN_A1    // Pino de dados 6
 #define  D5    PIN_A2    // Pino de dados 5
 #define  D4    PIN_A3    // Pino de dados 4
