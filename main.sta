@@ -1,57 +1,63 @@
 
-ROM used: 676 (8%)
-          676 (8%) including unused fragments
+ROM used: 847 (10%)
+          847 (10%) including unused fragments
 
           1 Average locations per line
           5 Average locations per statement
 
-RAM used: 9 (2%) at main() level
-          13 (4%) worst case
+RAM used: 21 (6%) at main() level
+          23 (6%) worst case
 
 Stack used: 3 worst case (out of 8 total available)
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   20     8   6  main.c
-  273     0   0  ..\..\..\ARQUIV~1\PICC\devices\16f876a.h
+   25    11   7  main.c
+  273     0   0  ..\..\..\Arquivos de programas\PICC\devices\16f876a.h
    15     9   6  teclado.c
-  179   105  74  lcd_modificado.c
-   34    20  14  funcoes.c
+  179   105  65  lcd_modificado.c
+   34    20  12  funcoes.c
+   57    16  10  verifica.c
 ----- -----
-  521   142 Total
+  583   161 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
-0     21   3   1             @delay_ms1
-0     32   5   1   256  2.5  teclado
-0     51   8   0   352  1.4  inicializa_lcd
-0     75  11   1   500  2.9  lcd_inst4
-0    133  20   1  1021  2.9  lcd_inst
-0    133  20   1  1026  2.7  Lcd_Dado
-0     64   9   2   212  2.6  func_normal
-0     18   3   0             @const58
-0     21   3   0   212  2.6  @const59
-0     57   8   1   212  2.6  func_bloqueado
-0     21   3   0             @const61
-0     21   3   0   138  2.6  @const62
-0     25   4   0   104  2.4  MAIN
+0     21   2   1             @delay_ms1
+0     32   4   1   256  2.5  teclado
+0     51   6   0   352  1.4  inicializa_lcd
+0     75   9   1   500  2.9  lcd_inst4
+0    133  16   1  1021  2.9  lcd_inst
+0    133  16   1  1026  2.7  Lcd_Dado
+0     64   8   2   212  2.6  func_normal
+0     18   2   0             @const58
+0     21   2   0             @const59
+0     57   7   1   218  2.3  func_bloqueado
+0     21   2   0             @const61
+0     21   2   0             @const62
+0     91  11   2   270  4.0  verifica
+0     21   2   0             @const73
+0     13   2   0             @const74
+ Inline        1    90  1.5  limpa_lcd
+0     60   7   3   179  2.9  MAIN
+0     11   1   0             @const81
 
 Program metrics:
     Functions               10
-    Statements              142
-    Comments                147
-    Volume (V)              6226
-    Difficilty (D)          26.0
-    Effort to implement (E) 161621
-    Time to implement (T)   2 hours, 30 minutes
+    Statements              161
+    Comments                161
+    Volume (V)              6377
+    Difficilty (D)          26.2
+    Effort to implement (E) 167020
+    Time to implement (T)   2 hours, 35 minutes
     Est Delivered Bugs (B)  1
     Cyclomatic Complexity   28
-    Maintainability (MI)    77
+    Maintainability (MI)    88
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
-00004-007FF   672  1372  
+00004-007FF   843  1201  
 00800-00FFF     0  2048  
 01000-017FF     0  2048  
 01800-01FFF     0  2048  

@@ -3,23 +3,11 @@
 #include <teclado.c>
 #include <lcd_modificado.c>
 #include <funcoes.c>
-<<<<<<< HEAD
-
+#include <verifica.c>
 char i;
 int1 bloqueio=0;//indica se a maquina ja tem um bloqueio pendente (0>sim   1>nao)
-=======
-#include <teclado.c>
-#include <verifica.c>
 
 
-struct user 
-{
-   char id;
-   int16 senha;
-   int1 block;
-   int1 logado;
-} usuario;
->>>>>>> 9983970855245f9b5f44b800ecbf4ad9fb7a9d87
 
 void main()
 {
@@ -30,7 +18,7 @@ void main()
    verifica();
    while(1)
    {
-   if(!bloqueio)func_normal();  //se bloqueio for==1 
-   if(bloqueio)func_bloqueado();//se bloqueio for==0
+   if(bloqueio)func_normal();  //se bloqueio for==1 
+   if(!bloqueio)func_bloqueado();//se bloqueio for==0
    }
 }

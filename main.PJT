@@ -11,7 +11,7 @@ Library=
 LinkerScript=
 
 [Target Data]
-FileList=C:\Documents and Settings\Administrador\CNS\main.c
+FileList=C:\Documents and Settings\eletronica\CNS\main.c
 BuildTool=C-COMPILER
 OptionString=+FM
 AdditionalOptionString=
@@ -32,9 +32,9 @@ AdditionalOptionString=
 0=0000 main.c 0 0 796 451 3 0
 
 [Opened Files]
-1=C:\Documents and Settings\Administrador\CNS\main.c
-2=C:\Documents and Settings\Administrador\CNS\funcoes.c
-3=C:\Documents and Settings\Administrador\CNS\lcd_modificado.c
+1=C:\Documents and Settings\eletronica\CNS\main.c
+2=verifica.c
+3=
 4=C:\Documents and Settings\Administrador\CNS\teclado.c
 5=
 [Units]

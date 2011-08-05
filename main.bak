@@ -3,16 +3,9 @@
 #include <teclado.c>
 #include <lcd_modificado.c>
 #include <funcoes.c>
-<<<<<<< HEAD
-
+#include <verifica.c>
 char i;
 int1 bloqueio=0;//indica se a maquina ja tem um bloqueio pendente (0>sim   1>nao)
-
-=======
-<<<<<<< HEAD
-#include <teclado.c>
-#include <verifica.c>
-
 
 struct user 
 {
@@ -22,10 +15,6 @@ struct user
    int1 logado;
 } usuario;
 
-
-=======
->>>>>>> 318478830ff9034b5fa4ed9fd59f178f715abb5f
->>>>>>> 9983970855245f9b5f44b800ecbf4ad9fb7a9d87
 void main()
 {
    inicializa_lcd();
