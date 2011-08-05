@@ -1,0 +1,20 @@
+//@@@@@@@@@@  biblioteca para manipulacao do usuario @@@@@@@@@@@@
+
+#define novo_usuario (read_eeprom(254)*6)// le a memória para saber quantos usuário tem cadastrados, e assim saber o proximo endereco para novo usuario
+#define dig_0 ((read_eeprom(254)*6)+1)// le a memoria para saber o proximo endereco para senha 
+#define dig_1 ((read_eeprom(254)*6)+2)// le a memoria para saber o proximo endereco para senha 
+#define dig_2 ((read_eeprom(254)*6)+3)// le a memoria para saber o proximo endereco para senha 
+#define dig_3 ((read_eeprom(254)*6)+4)// le a memoria para saber o proximo endereco para senha 
+#define incrementa_usuario ((read_eeprom(254)+1)// le a memória para saber quantos usuário tem cadastrados, e soma mais um para incrementar a quantidade
+
+
+void novo_user(struct user)
+{
+   write_eeprom(novo_usuario,usuario.id);
+   write_eeprom(dig_0,usuario.dig0);
+   write_eeprom(dig_1,usuario.dig1);
+   write_eeprom(dig_2,usuario.dig2);
+   write_eeprom(dig_3,usuario.dig3);
+   write_eeprom(254,incrementa_usuario)
+   
+}

@@ -1,11 +1,15 @@
 #define rele1    PIN_C4 
 #define rele2    PIN_C5 
 #define rele3    PIN_C6
-#define led_vermelho PIN_B6  //fincionamento bloqueado
+#define led_vermelho PIN_B6  //funcionamento bloqueado
 #define led_verde    PIN_B7  //fincionando normal
+
+
+
 //*******************************************************************************************************************
 void func_normal()
 {
+
  output_high(rele1);
  output_high(rele2);
  output_high(rele3);
@@ -14,7 +18,9 @@ void func_normal()
  printf(Lcd_Dado,"  FUNC_NORMAL   ");
  lcd_inst(0xc0);
  printf(Lcd_Dado,"PR. TECLA P/ BLO");
- while(!teclado);
+ 
+ while(!teclado());
+ 
 
 }
 //******************************************************************************************************************
@@ -28,6 +34,26 @@ void func_bloqueado()
  printf(Lcd_Dado," FUNC_BLOQUEADO ");
  lcd_inst(0xc0);
  printf(Lcd_Dado,"PR. TECLA P/ DES");
- while(!teclado);
+ while(!teclado());
 }
 //******************************************************************************************************************
+//@@@@@@@@@@  biblioteca para manipulacao do usuario @@@@@@@@@@@@
+
+#define novo_usuario (read_eeprom(254)*6)// le a memória para saber quantos usuário tem cadastrados, e assim saber o proximo endereco para novo usuario
+#define dig_0 ((read_eeprom(254)*6)+1)// le a memoria para saber o proximo endereco para senha 
+#define dig_1 ((read_eeprom(254)*6)+2)// le a memoria para saber o proximo endereco para senha 
+#define dig_2 ((read_eeprom(254)*6)+3)// le a memoria para saber o proximo endereco para senha 
+#define dig_3 ((read_eeprom(254)*6)+4)// le a memoria para saber o proximo endereco para senha 
+#define incrementa_usuario ((read_eeprom(254)+1)// le a memória para saber quantos usuário tem cadastrados, e soma mais um para incrementar a quantidade
+
+
+void novo_user(struct user)
+{
+   write_eeprom(novo_usuario,usuario.id);
+   write_eeprom(dig_0,usuario.dig0);
+   write_eeprom(dig_1,usuario.dig1);
+   write_eeprom(dig_2,usuario.dig2);
+   write_eeprom(dig_3,usuario.dig3);
+   write_eeprom(254,incrementa_usuario)
+   
+}

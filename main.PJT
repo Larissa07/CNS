@@ -33,10 +33,12 @@ AdditionalOptionString=
 
 [Opened Files]
 1=C:\Documents and Settings\eletronica\CNS\main.c
-2=verifica.c
-3=
-4=C:\Documents and Settings\Administrador\CNS\teclado.c
+2=C:\Documents and Settings\eletronica\CNS\verifica.c
+3=C:\Documents and Settings\eletronica\CNS\funcoes.c
+4=C:\Documents and Settings\eletronica\CNS\teclado.c
 5=
+6=
+7=
 [Units]
 Count=1
 1=main.c (main)
